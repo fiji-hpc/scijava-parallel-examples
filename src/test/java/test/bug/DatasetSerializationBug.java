@@ -35,7 +35,6 @@ public class DatasetSerializationBug
 	@Test
 	public void failing()
 	{
-		// FIXME
 		try( ParallelizationParadigm paradigm = initParadigm())
 		{
 			paradigm.runAll( TestCommand.class, Arrays.asList(
