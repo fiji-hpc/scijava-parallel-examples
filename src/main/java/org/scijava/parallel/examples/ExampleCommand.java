@@ -1,6 +1,5 @@
 package org.scijava.parallel.examples;
 
-import org.scijava.ItemIO;
 import org.scijava.command.Command;
 import org.scijava.plugin.Parameter;
 import org.scijava.plugin.Plugin;
