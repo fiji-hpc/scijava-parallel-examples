@@ -1,6 +1,5 @@
 package test.bug;
 
-import cz.it4i.parallel.TestParadigm;
 import net.imagej.Dataset;
 import net.imagej.DatasetService;
 import net.imglib2.img.array.ArrayImgs;
@@ -12,6 +11,8 @@ import org.scijava.parallel.ParallelizationParadigm;
 import org.scijava.parallel.utils.InProcessImageJServerRunner;
 import org.scijava.plugin.Parameter;
 import org.scijava.plugin.Plugin;
+
+import cz.it4i.parallel.utils.TestParadigm;
 
 import java.util.Arrays;
 import java.util.Collections;

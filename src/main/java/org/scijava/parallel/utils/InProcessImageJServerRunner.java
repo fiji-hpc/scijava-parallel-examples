@@ -17,6 +17,7 @@ public class InProcessImageJServerRunner extends AbstractImageJServerRunner
 
 	public InProcessImageJServerRunner(Context context)
 	{
+		super(true);
 		service = context.service( ImageJServerService.class );
 	}
 
@@ -33,8 +34,7 @@ public class InProcessImageJServerRunner extends AbstractImageJServerRunner
 	}
 
 	@Override
-	public void close()
-	{
+	public void shutdown() {
 		service.dispose();
 	}
 
