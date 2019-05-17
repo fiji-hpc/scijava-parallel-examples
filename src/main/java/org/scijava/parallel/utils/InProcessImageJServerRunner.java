@@ -28,9 +28,10 @@ public class InProcessImageJServerRunner extends AbstractImageJServerRunner
 	}
 
 	@Override
-	public int getNCores()
+	public List<Integer> getNCores()
 	{
-		return Runtime.getRuntime().availableProcessors();
+		return Collections.singletonList(Runtime.getRuntime()
+			.availableProcessors());
 	}
 
 	@Override
