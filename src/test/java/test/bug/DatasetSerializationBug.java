@@ -1,22 +1,22 @@
 package test.bug;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+
 import net.imagej.Dataset;
 import net.imagej.DatasetService;
 import net.imglib2.img.array.ArrayImgs;
+
 import org.junit.Test;
 import org.scijava.Context;
 import org.scijava.ItemIO;
 import org.scijava.command.Command;
 import org.scijava.parallel.ParallelizationParadigm;
-import org.scijava.parallel.utils.InProcessImageJServerRunner;
-import org.scijava.parallel.utils.TestParadigm;
+import org.scijava.parallel.utils.DemoHelper;
 import org.scijava.plugin.Parameter;
 import org.scijava.plugin.Plugin;
-
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
 
 public class DatasetSerializationBug
 {
@@ -24,29 +24,28 @@ public class DatasetSerializationBug
 	private final DatasetService datasetService = context.service( DatasetService.class );
 
 	@Test
-	public void working()
+	public void workingOneData()
 	{
-		try( ParallelizationParadigm paradigm = initParadigm())
+		DemoHelper demoHelper = new DemoHelper();
+		try (ParallelizationParadigm paradigm = demoHelper.getParadigm())
 		{
+			paradigm.init();
 			paradigm.runAll( TestCommand.class, Collections.singletonList( initParameters( "dummy1.png" ) ) );
 		}
 	}
 
 	@Test
-	public void failing()
+	public void workingTwoDataset()
 	{
-		try( ParallelizationParadigm paradigm = initParadigm())
+		DemoHelper demoHelper = new DemoHelper();
+		try (ParallelizationParadigm paradigm = demoHelper.getParadigm())
 		{
+			paradigm.init();
 			paradigm.runAll( TestCommand.class, Arrays.asList(
 					initParameters( "dummy1.png" ),
 					initParameters( "dummy2.png" )
 			) );
 		}
-	}
-
-	private TestParadigm initParadigm()
-	{
-		return new TestParadigm( new InProcessImageJServerRunner( context ), context );
 	}
 
 	private Map< String, Object > initParameters( String name )

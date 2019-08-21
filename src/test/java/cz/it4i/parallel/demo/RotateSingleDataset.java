@@ -12,15 +12,14 @@ import java.util.Map;
 import net.imagej.Dataset;
 import net.imagej.plugins.commands.imglib.RotateImageXY;
 
-import org.scijava.Context;
 import org.scijava.parallel.ParallelizationParadigm;
-import org.scijava.parallel.utils.TestParadigm;
-import org.scijava.ui.UIService;
+import org.scijava.parallel.utils.DemoHelper;
+import org.scijava.parallel.utils.ExampleImage;
 
 /**
- * Demonstration example showing basic usage of ParalellizationParadigm with
- * ImageJ server started in local system. It downloads a picture (Lena) and
- * rotate it for 90 degree. Result is immediately showed.
+ * Demonstration example showing basic usage of ParalellizationParadigm. It
+ * downloads a picture (Lena) and rotate it for 90 degree. Result is immediately
+ * showed.
  * 
  * @author koz01
  */
@@ -29,12 +28,12 @@ public class RotateSingleDataset
 
 	public static void main(String[] args)
 	{
-		Context context = new Context();
-		DatasetIOService ioService = context.service( DatasetIOService.class );
-		UIService uiService = context.service( UIService.class );
-		try( ParallelizationParadigm paradigm = TestParadigm.localImageJServer( Config.getFijiExecutable(), context ))
+		DemoHelper demoHelper = new DemoHelper();
+		try (ParallelizationParadigm paradigm = demoHelper.getParadigm())
 		{
-			uiService.show( rotateSingleDataset( ioService, paradigm ) );
+			paradigm.init();
+			demoHelper.getUiService().show(rotateSingleDataset(demoHelper
+				.getDatasetIOService(), paradigm));
 		}
 	}
 

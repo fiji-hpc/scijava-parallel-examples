@@ -20,8 +20,7 @@ import net.imglib2.view.Views;
 import org.scijava.Context;
 import org.scijava.command.Command;
 import org.scijava.parallel.ParallelizationParadigm;
-import org.scijava.parallel.utils.InProcessImageJServerRunner;
-import org.scijava.parallel.utils.TestParadigm;
+import org.scijava.parallel.utils.DemoHelper;
 import org.scijava.plugin.Parameter;
 import org.scijava.plugin.Plugin;
 
@@ -40,14 +39,13 @@ public class DimensionBugDemo implements Command {
 	}
 
 	public static void main(String... args) {
-		final Context context = new Context();
-		final InProcessImageJServerRunner runner = new InProcessImageJServerRunner(
-			context);
-		try (final ParallelizationParadigm paradigm = new TestParadigm(runner,
-			context))
+		DemoHelper demoHelper = new DemoHelper();
+		try (final ParallelizationParadigm paradigm = demoHelper.getParadigm())
 		{
+			paradigm.init();
 			Map<String, Object> map = new HashMap<>();
-			map.put("input", wrapAsDataset(context, ArrayImgs.unsignedBytes(
+			map.put("input", wrapAsDataset(demoHelper.getContext(), ArrayImgs
+				.unsignedBytes(
 				IMAGE_DIMENSIONS)));
 			List<Map<String, Object>> parameters = Collections.singletonList(map);
 			paradigm.runAll(DimensionBugDemo.class, parameters);

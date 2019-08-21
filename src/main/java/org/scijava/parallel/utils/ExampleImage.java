@@ -12,12 +12,16 @@ import java.nio.file.StandardCopyOption;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * Helper class for testing image downloading
+ * 
+ * @author koz01
+ */
 @Slf4j
 public class ExampleImage
 {
 
-
-	static Path lenaAsTempFile()
+	public static Path lenaAsTempFile()
 	{
 		return downloadToTmpFile( "https://upload.wikimedia.org/wikipedia/en/7/7d/Lenna_%28test_image%29.png" );
 	}
