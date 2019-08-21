@@ -21,10 +21,9 @@ import org.scijava.Context;
 import org.scijava.command.Command;
 import org.scijava.parallel.ParallelizationParadigm;
 import org.scijava.parallel.utils.InProcessImageJServerRunner;
+import org.scijava.parallel.utils.TestParadigm;
 import org.scijava.plugin.Parameter;
 import org.scijava.plugin.Plugin;
-
-import cz.it4i.parallel.utils.TestParadigm;
 
 @Plugin(type = Command.class)
 public class DimensionBugDemo implements Command {

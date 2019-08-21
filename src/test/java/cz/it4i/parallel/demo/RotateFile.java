@@ -1,5 +1,5 @@
 
-package test.bug;
+package cz.it4i.parallel.demo;
 
 import static cz.it4i.parallel.Routines.runWithExceptionHandling;
 
@@ -20,11 +20,18 @@ import net.imagej.plugins.commands.imglib.RotateImageXY;
 
 import org.scijava.Context;
 import org.scijava.parallel.ParallelizationParadigm;
-import org.scijava.parallel.utils.InProcessImageJServerRunner;
+import org.scijava.parallel.utils.TestParadigm;
 
 import cz.it4i.parallel.Routines;
-import cz.it4i.parallel.utils.TestParadigm;
 
+/**
+ * Demonstration example showing basic usage of ParalellizationParadigm with
+ * ImageJ server started in local system. It downloads a picture (Lena) and
+ * rotate it for 170 and 340 degree. Result is stored into directory 'output'
+ * located in working directory.
+ * 
+ * @author koz01
+ */
 public class RotateFile {
 
 	private static final String OUTPUT_DIRECTORY = "output";
@@ -36,14 +43,12 @@ public class RotateFile {
 	public static void main(String[] args) throws IOException {
 		final Context context = new Context();
 		ioService = context.service(DatasetIOService.class);
-		try (ParallelizationParadigm paradigm = new TestParadigm(
-			new InProcessImageJServerRunner(context), context))
-		{
+		try ( ParallelizationParadigm paradigm = TestParadigm.localImageJServer( Config.getFijiExecutable(), context ) ) {
 			callRemotePlugin(paradigm);
 		}
 	}
 
-	static void callRemotePlugin(final ParallelizationParadigm paradigm)
+	public static void callRemotePlugin(final ParallelizationParadigm paradigm)
 		throws IOException
 	{
 		if (ioService == null) {
@@ -55,7 +60,7 @@ public class RotateFile {
 		saveOutputs( parametersList, results );
 	}
 
-	static List<Map<String, Object>> initParameters(
+	public static List<Map<String, Object>> initParameters(
 		DatasetIOService ioServiceLocal)
 		throws IOException
 	{
@@ -85,7 +90,7 @@ public class RotateFile {
 		}
 	}
 
-	static Path prepareOutputDirectory() {
+	public static Path prepareOutputDirectory() {
 		Path outputDirectory = Paths.get(OUTPUT_DIRECTORY);
 		if (!Files.exists(outputDirectory)) {
 			Routines.runWithExceptionHandling(() -> Files.createDirectories(

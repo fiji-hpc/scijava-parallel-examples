@@ -1,7 +1,6 @@
-package test.bug;
+package cz.it4i.parallel.demo;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import static cz.it4i.parallel.Routines.getSuffix;
 
 import java.io.File;
 import java.io.IOException;
@@ -11,14 +10,20 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 
-import static cz.it4i.parallel.Routines.getSuffix;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+/**
+ * Helper class for testing image downloading
+ * 
+ * @author koz01
+ */
 public class ExampleImage
 {
 
 	private final static Logger log = LoggerFactory.getLogger(RotateFile.class);
 
-	static Path lenaAsTempFile()
+	public static Path lenaAsTempFile()
 	{
 		return downloadToTmpFile( "https://upload.wikimedia.org/wikipedia/en/7/7d/Lenna_%28test_image%29.png" );
 	}

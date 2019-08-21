@@ -9,10 +9,9 @@ import org.scijava.ItemIO;
 import org.scijava.command.Command;
 import org.scijava.parallel.ParallelizationParadigm;
 import org.scijava.parallel.utils.InProcessImageJServerRunner;
+import org.scijava.parallel.utils.TestParadigm;
 import org.scijava.plugin.Parameter;
 import org.scijava.plugin.Plugin;
-
-import cz.it4i.parallel.utils.TestParadigm;
 
 import java.util.Arrays;
 import java.util.Collections;
