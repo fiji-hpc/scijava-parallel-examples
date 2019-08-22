@@ -10,6 +10,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 
+import cz.it4i.parallel.SciJavaParallelRuntimeException;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -18,8 +19,12 @@ import lombok.extern.slf4j.Slf4j;
  * @author koz01
  */
 @Slf4j
-public class ExampleImage
+public final class ExampleImage
 {
+
+	private ExampleImage() {
+		// it is utility class where are used only static member
+	}
 
 	public static Path lenaAsTempFile()
 	{
@@ -35,7 +40,7 @@ public class ExampleImage
 		}
 		catch (IOException exc) {
 			log.error("download image", exc);
-			throw new RuntimeException(exc);
+			throw new SciJavaParallelRuntimeException(exc);
 		}
 	}
 }

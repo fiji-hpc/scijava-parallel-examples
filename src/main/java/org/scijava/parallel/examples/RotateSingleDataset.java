@@ -14,6 +14,9 @@ import net.imagej.plugins.commands.imglib.RotateImageXY;
 
 import org.scijava.parallel.ParallelizationParadigm;
 import org.scijava.parallel.utils.ExamplesHelper;
+
+import cz.it4i.parallel.SciJavaParallelRuntimeException;
+
 import org.scijava.parallel.utils.ExampleImage;
 
 /**
@@ -57,7 +60,7 @@ public class RotateSingleDataset
 		}
 		catch ( IOException e )
 		{
-			throw new RuntimeException( e );
+			throw new SciJavaParallelRuntimeException(e);
 		}
 	}
 }

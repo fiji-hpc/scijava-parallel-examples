@@ -11,6 +11,9 @@ import net.imagej.ops.math.PrimitiveMath;
 import org.scijava.parallel.ParallelizationParadigm;
 import org.scijava.parallel.utils.ExamplesHelper;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class AddDoubles
 {
 
@@ -31,7 +34,7 @@ public class AddDoubles
 
 			List<Map<String, Object>> result = paradigm.runAll(
 				PrimitiveMath.DoubleMultiply.class, inputs);
-			System.out.println("result: " + result);
+			log.info("result: " + result);
 		}
 	}
 
