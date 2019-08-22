@@ -21,7 +21,7 @@ import cz.it4i.command.ParadigmProfilesManager;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class DemoHelper {
+public class ExamplesHelper {
 
 	
 	private final Context context;
@@ -30,7 +30,7 @@ public class DemoHelper {
 	private UIService uiService;
 	private DatasetIOService datasetIOService;
 
-	public DemoHelper() {
+	public ExamplesHelper() {
 		context = new Context();
 		parallelService = context.getService(ParallelService.class);
 		commandService = context.getService(CommandService.class);
@@ -44,10 +44,11 @@ public class DemoHelper {
 			try {
 				commandService.run(ParadigmProfilesManager.class, true).get();
 			}
-			catch (InterruptedException | ExecutionException exc) {
-				if (exc instanceof InterruptedException) {
-					Thread.currentThread().interrupt();
-				}
+			catch (ExecutionException exc) {
+				log.error(exc.getMessage(), exc);
+			}
+			catch (InterruptedException exc) {
+				Thread.currentThread().interrupt();
 				log.error(exc.getMessage(), exc);
 			}
 		}

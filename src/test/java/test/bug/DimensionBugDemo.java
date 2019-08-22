@@ -20,7 +20,7 @@ import net.imglib2.view.Views;
 import org.scijava.Context;
 import org.scijava.command.Command;
 import org.scijava.parallel.ParallelizationParadigm;
-import org.scijava.parallel.utils.DemoHelper;
+import org.scijava.parallel.utils.ExamplesHelper;
 import org.scijava.plugin.Parameter;
 import org.scijava.plugin.Plugin;
 
@@ -39,7 +39,7 @@ public class DimensionBugDemo implements Command {
 	}
 
 	public static void main(String... args) {
-		DemoHelper demoHelper = new DemoHelper();
+		ExamplesHelper demoHelper = new ExamplesHelper();
 		try (final ParallelizationParadigm paradigm = demoHelper.getParadigm())
 		{
 			paradigm.init();

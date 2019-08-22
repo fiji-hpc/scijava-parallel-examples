@@ -1,5 +1,5 @@
 
-package cz.it4i.parallel.demo;
+package org.scijava.parallel.examples;
 
 import io.scif.services.DatasetIOService;
 
@@ -13,7 +13,7 @@ import net.imagej.Dataset;
 import net.imagej.plugins.commands.imglib.RotateImageXY;
 
 import org.scijava.parallel.ParallelizationParadigm;
-import org.scijava.parallel.utils.DemoHelper;
+import org.scijava.parallel.utils.ExamplesHelper;
 import org.scijava.parallel.utils.ExampleImage;
 
 /**
@@ -28,7 +28,7 @@ public class RotateSingleDataset
 
 	public static void main(String[] args)
 	{
-		DemoHelper demoHelper = new DemoHelper();
+		ExamplesHelper demoHelper = new ExamplesHelper();
 		try (ParallelizationParadigm paradigm = demoHelper.getParadigm())
 		{
 			paradigm.init();

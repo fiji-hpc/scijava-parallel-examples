@@ -1,5 +1,5 @@
 
-package cz.it4i.parallel.demo;
+package org.scijava.parallel.examples;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -9,14 +9,14 @@ import java.util.Map;
 import net.imagej.ops.math.PrimitiveMath;
 
 import org.scijava.parallel.ParallelizationParadigm;
-import org.scijava.parallel.utils.DemoHelper;
+import org.scijava.parallel.utils.ExamplesHelper;
 
 public class AddDoubles
 {
 
 	public static void main(String[] args)
 	{
-		DemoHelper demoHelper = new DemoHelper();
+		ExamplesHelper demoHelper = new ExamplesHelper();
 
 		try (ParallelizationParadigm paradigm = demoHelper.getParadigm())
 		{

@@ -14,7 +14,7 @@ import org.scijava.Context;
 import org.scijava.ItemIO;
 import org.scijava.command.Command;
 import org.scijava.parallel.ParallelizationParadigm;
-import org.scijava.parallel.utils.DemoHelper;
+import org.scijava.parallel.utils.ExamplesHelper;
 import org.scijava.plugin.Parameter;
 import org.scijava.plugin.Plugin;
 
@@ -26,7 +26,7 @@ public class DatasetSerializationBug
 	@Test
 	public void workingOneData()
 	{
-		DemoHelper demoHelper = new DemoHelper();
+		ExamplesHelper demoHelper = new ExamplesHelper();
 		try (ParallelizationParadigm paradigm = demoHelper.getParadigm())
 		{
 			paradigm.init();
@@ -37,7 +37,7 @@ public class DatasetSerializationBug
 	@Test
 	public void workingTwoDataset()
 	{
-		DemoHelper demoHelper = new DemoHelper();
+		ExamplesHelper demoHelper = new ExamplesHelper();
 		try (ParallelizationParadigm paradigm = demoHelper.getParadigm())
 		{
 			paradigm.init();
