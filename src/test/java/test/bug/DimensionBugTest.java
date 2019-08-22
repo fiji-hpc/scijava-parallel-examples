@@ -64,7 +64,6 @@ public class DimensionBugTest {
 			final ImgPlus<UnsignedByteType> imgPlus = new ImgPlus<>(ImgView.wrap(Views
 				.zeroMin(output), null));
 			Dataset example = new DefaultDataset(context, imgPlus);
-			// example.setName("dummy.png");
 			return example;
 		}
 
