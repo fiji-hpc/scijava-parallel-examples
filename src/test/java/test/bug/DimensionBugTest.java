@@ -20,10 +20,11 @@ import org.junit.Test;
 import org.scijava.Context;
 import org.scijava.ItemIO;
 import org.scijava.command.Command;
-import org.scijava.parallel.ParallelizationParadigm;
 import org.scijava.parallel.utils.ExamplesHelper;
 import org.scijava.plugin.Parameter;
 import org.scijava.plugin.Plugin;
+
+import cz.it4i.parallel.RPCParadigm;
 
 public class DimensionBugTest {
 
@@ -32,7 +33,7 @@ public class DimensionBugTest {
 	@Test
 	public void testDimenstionInDataset() {
 		ExamplesHelper demoHelper = new ExamplesHelper();
-		try (final ParallelizationParadigm paradigm = demoHelper.getParadigm()) {
+		try (final RPCParadigm paradigm = demoHelper.getParadigm()) {
 			paradigm.init();
 			Dataset result = (Dataset) paradigm.runAll(DimensionBugDemo.class,
 				Collections.singletonList(new HashMap<>())).get(0).get("output");

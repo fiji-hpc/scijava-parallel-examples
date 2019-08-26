@@ -12,12 +12,11 @@ import java.util.Map;
 import net.imagej.Dataset;
 import net.imagej.plugins.commands.imglib.RotateImageXY;
 
-import org.scijava.parallel.ParallelizationParadigm;
+import org.scijava.parallel.utils.ExampleImage;
 import org.scijava.parallel.utils.ExamplesHelper;
 
+import cz.it4i.parallel.RPCParadigm;
 import cz.it4i.parallel.SciJavaParallelRuntimeException;
-
-import org.scijava.parallel.utils.ExampleImage;
 
 /**
  * Demonstration example showing basic usage of ParalellizationParadigm. It
@@ -32,7 +31,7 @@ public class RotateSingleDataset
 	public static void main(String[] args)
 	{
 		ExamplesHelper demoHelper = new ExamplesHelper();
-		try (ParallelizationParadigm paradigm = demoHelper.getParadigm())
+		try (RPCParadigm paradigm = demoHelper.getParadigm())
 		{
 			paradigm.init();
 			demoHelper.getUiService().show(rotateSingleDataset(demoHelper
@@ -40,7 +39,8 @@ public class RotateSingleDataset
 		}
 	}
 
-	static Object rotateSingleDataset( DatasetIOService ioService, ParallelizationParadigm paradigm )
+	static Object rotateSingleDataset(DatasetIOService ioService,
+		RPCParadigm paradigm)
 	{
 		List< Map< String, Object > > parametersList = initParameters(ioService);
 		List<Map<String, Object>> results = paradigm.runAll(RotateImageXY.class,

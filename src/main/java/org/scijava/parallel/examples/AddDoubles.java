@@ -8,9 +8,9 @@ import java.util.Map;
 
 import net.imagej.ops.math.PrimitiveMath;
 
-import org.scijava.parallel.ParallelizationParadigm;
 import org.scijava.parallel.utils.ExamplesHelper;
 
+import cz.it4i.parallel.RPCParadigm;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -21,7 +21,7 @@ public class AddDoubles
 	{
 		ExamplesHelper demoHelper = new ExamplesHelper();
 
-		try (ParallelizationParadigm paradigm = demoHelper.getParadigm())
+		try (RPCParadigm paradigm = demoHelper.getParadigm())
 		{
 			paradigm.init();
 			List<Map<String, Object>> inputs = new LinkedList<>();

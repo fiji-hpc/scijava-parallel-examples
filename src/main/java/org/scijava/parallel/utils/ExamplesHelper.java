@@ -14,10 +14,10 @@ import java.util.concurrent.ExecutionException;
 import org.scijava.Context;
 import org.scijava.command.CommandService;
 import org.scijava.parallel.ParallelService;
-import org.scijava.parallel.ParallelizationParadigm;
 import org.scijava.ui.UIService;
 
 import cz.it4i.command.ParadigmProfilesManager;
+import cz.it4i.parallel.RPCParadigm;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -38,8 +38,8 @@ public class ExamplesHelper {
 		datasetIOService = context.getService(DatasetIOService.class);
 	}
 	
-	public final ParallelizationParadigm getParadigm() {
-		ParallelizationParadigm result = parallelService.getParadigm();
+	public final RPCParadigm getParadigm() {
+		RPCParadigm result = parallelService.getParadigmOfType(RPCParadigm.class);
 		if (result == null) {
 			try {
 				commandService.run(ParadigmProfilesManager.class, true).get();

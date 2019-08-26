@@ -13,10 +13,11 @@ import org.junit.Test;
 import org.scijava.Context;
 import org.scijava.ItemIO;
 import org.scijava.command.Command;
-import org.scijava.parallel.ParallelizationParadigm;
 import org.scijava.parallel.utils.ExamplesHelper;
 import org.scijava.plugin.Parameter;
 import org.scijava.plugin.Plugin;
+
+import cz.it4i.parallel.RPCParadigm;
 
 public class DatasetSerializationBug
 {
@@ -27,7 +28,7 @@ public class DatasetSerializationBug
 	public void workingOneData()
 	{
 		ExamplesHelper demoHelper = new ExamplesHelper();
-		try (ParallelizationParadigm paradigm = demoHelper.getParadigm())
+		try (RPCParadigm paradigm = demoHelper.getParadigm())
 		{
 			paradigm.init();
 			paradigm.runAll( TestCommand.class, Collections.singletonList( initParameters( "dummy1.png" ) ) );
@@ -38,7 +39,7 @@ public class DatasetSerializationBug
 	public void workingTwoDataset()
 	{
 		ExamplesHelper demoHelper = new ExamplesHelper();
-		try (ParallelizationParadigm paradigm = demoHelper.getParadigm())
+		try (RPCParadigm paradigm = demoHelper.getParadigm())
 		{
 			paradigm.init();
 			paradigm.runAll( TestCommand.class, Arrays.asList(
