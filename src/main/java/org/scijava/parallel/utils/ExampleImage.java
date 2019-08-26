@@ -1,6 +1,6 @@
 package org.scijava.parallel.utils;
 
-import static cz.it4i.parallel.Routines.getSuffix;
+import static cz.it4i.common.FileRoutines.getSuffix;
 
 import java.io.File;
 import java.io.IOException;
