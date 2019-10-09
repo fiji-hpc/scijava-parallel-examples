@@ -10,7 +10,7 @@
 		<relativePath />
 	</parent>
 	<artifactId>scijava-parallel-examples</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>SciJava Parallel Examples</name>
 	<description>Parallelization framework for SciJava applications.</description>
 	<url>https://github.com/maarzt/scijava-parallel-examples</url>
@@ -99,7 +99,7 @@
 		<dependency>
 			<groupId>org.scijava</groupId>
 			<artifactId>scijava-parallel-fst</artifactId>
-			<version>4.0.0-SNAPSHOT</version>
+			<version>4.0.0</version>
 			<exclusions>
 				<exclusion>
 					<groupId>org.slf4j</groupId>
