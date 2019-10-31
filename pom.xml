@@ -94,12 +94,18 @@
 			<groupId>loci</groupId>
 			<artifactId>scifio</artifactId>
 			<version>4.4.9</version>
+			<exclusions>
+				<exclusion>
+				<groupId>xalan</groupId>
+				<artifactId>xalan</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 		<dependency>
 			<groupId>org.scijava</groupId>
 			<artifactId>scijava-parallel-fst</artifactId>
-			<version>4.0.0</version>
+			<version>1.0.0</version>
 			<exclusions>
 				<exclusion>
 					<groupId>org.slf4j</groupId>
